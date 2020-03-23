@@ -12,9 +12,4 @@ namespace Vidly.Models
         public string Name { get; set; }
     }
 
-    public class EmpDBContext : DbContext
-    {
-
-        public DbSet<Movie> Employees { get; set; }
-    }
 }
