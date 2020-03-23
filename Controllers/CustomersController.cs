@@ -9,29 +9,28 @@ namespace Vidly.Controllers
 {
     public class CustomersController : Controller
     {
+        private ApplicationDbContext _context;
+
+        public CustomersController()
+        {
+            _context=new ApplicationDbContext();
+        }
         // GET: Customers
         public ActionResult Index()
         {
             return View();
         }
 
-        public List<Customer> getList()
-        {
-            List<Customer> listCustomers=new List<Customer>
-            {
-                new Customer{Id = 1,Name = "Prairit"},
-                new Customer{Id = 2,Name = "Rachit"}
-            };
-            return listCustomers;
-        }
         public ActionResult List()
         {
-            return View(getList());
+            IEnumerable<Customer> listCustomers = _context.Customers;
+            return View(listCustomers);
         }
 
         public ActionResult Details(int id)
         {
-            return View(getList().SingleOrDefault(e => e.Id == id));
+            IEnumerable<Customer> listCustomers = _context.Customers;
+            return View(listCustomers.SingleOrDefault(e => e.Id == id));
         }
     }
 }
