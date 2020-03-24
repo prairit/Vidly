@@ -30,7 +30,7 @@ namespace Vidly.Controllers
 
         public ActionResult Details(int id)
         {
-            IEnumerable<Customer> listCustomers = _context.Customers;
+            IEnumerable<Customer> listCustomers = _context.Customers.Include(e=>e.MembershipType);
             return View(listCustomers.SingleOrDefault(e => e.Id == id));
         }
     }

@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Data.Entity;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
@@ -10,6 +11,12 @@ namespace Vidly.Controllers
 {
     public class MoviesController : Controller
     {
+        private ApplicationDbContext _context;
+
+        public MoviesController()
+        {
+            _context=new ApplicationDbContext();
+        }
         // GET: Movies
         public ActionResult Index()
         {
@@ -45,12 +52,14 @@ namespace Vidly.Controllers
 
         public ActionResult List()
         {
-            return View(getList());
+            IEnumerable<Movie> listMovies = _context.Movies.Include(e =>e.Genre);
+            return View(listMovies);
         }
 
         public ActionResult Details(int id)
         {
-            return View(getList().SingleOrDefault(e => e.Id == id));
+            IEnumerable<Movie> listMovies = _context.Movies.Include(e => e.Genre);
+            return View(listMovies.SingleOrDefault(e => e.Id == id));
         }
     }
 }

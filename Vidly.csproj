@@ -204,6 +204,18 @@
     <Compile Include="Migrations\202003241115440_SetNameToMembershipTypes.designer.cs">
       <DependentUpon>202003241115440_SetNameToMembershipTypes.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\202003241145198_AddBirthdateToCustomer.cs" />
+    <Compile Include="Migrations\202003241145198_AddBirthdateToCustomer.designer.cs">
+      <DependentUpon>202003241145198_AddBirthdateToCustomer.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202003241314515_AddMovie.cs" />
+    <Compile Include="Migrations\202003241314515_AddMovie.designer.cs">
+      <DependentUpon>202003241314515_AddMovie.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202003241316098_SeedGenres.cs" />
+    <Compile Include="Migrations\202003241316098_SeedGenres.designer.cs">
+      <DependentUpon>202003241316098_SeedGenres.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\Customer.cs" />
@@ -315,6 +327,15 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\202003241115440_SetNameToMembershipTypes.resx">
       <DependentUpon>202003241115440_SetNameToMembershipTypes.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202003241145198_AddBirthdateToCustomer.resx">
+      <DependentUpon>202003241145198_AddBirthdateToCustomer.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202003241314515_AddMovie.resx">
+      <DependentUpon>202003241314515_AddMovie.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202003241316098_SeedGenres.resx">
+      <DependentUpon>202003241316098_SeedGenres.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
