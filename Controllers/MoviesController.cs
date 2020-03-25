@@ -40,16 +40,6 @@ namespace Vidly.Controllers
             return Content(year+"/"+month);
         }
 
-        private List<Movie> getList()
-        {
-            List < Movie> listMovie= new List<Movie>
-            {
-                new Movie{Id = 1,Name = "The Prestige"},
-                new Movie{Id = 2,Name = "Minions"}
-            };
-            return listMovie;
-        }
-
         public ActionResult List()
         {
             IEnumerable<Movie> listMovies = _context.Movies.Include(e =>e.Genre);
@@ -60,6 +50,46 @@ namespace Vidly.Controllers
         {
             IEnumerable<Movie> listMovies = _context.Movies.Include(e => e.Genre);
             return View(listMovies.SingleOrDefault(e => e.Id == id));
+        }
+
+        public ActionResult New()
+        {
+            var model=new MovieFormViewModel
+            {
+                Genres = _context.Genres,
+            };
+            return View("MovieForm",model);
+        }
+
+        [HttpPost]
+        public ActionResult Save(Movie movie)
+        {
+            if (movie.Id == 0)
+            {
+                movie.DateAdded=DateTime.Now;
+                _context.Movies.Add(movie);
+            }
+            else
+                _context.Entry(movie).State = System.Data.Entity.EntityState.Modified;
+
+            _context.SaveChanges();
+
+            return RedirectToAction("List");
+        }
+
+        public ActionResult Edit(int id)
+        {
+            Movie movie = _context.Movies.SingleOrDefault(e => e.Id == id);
+
+            if (movie == null)
+                return HttpNotFound();
+
+            var model=new MovieFormViewModel
+            {
+                Genres = _context.Genres,
+                Movie = movie
+            };
+            return View("MovieForm",model);
         }
     }
 }
