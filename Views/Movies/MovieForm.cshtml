@@ -3,7 +3,14 @@
     ViewBag.Title = "MovieForm";
 }
 
-<h2>New Movie</h2>
+@if (Model.Movie == null)
+{
+    <h2>New Movie</h2>
+}
+else
+{
+    <h2>Edit Movie</h2>
+}
 
 @using (Html.BeginForm("Save", "Movies", FormMethod.Post))
 {
@@ -13,18 +20,18 @@
     </div>
     <div class="form-group">
         @Html.LabelFor(e => e.Movie.ReleaseDate)
-        @Html.TextBoxFor(e => e.Movie.ReleaseDate,"{0:d MMM yyyy}", new { @class = "form-control" })
+        @Html.TextBoxFor(e => e.Movie.ReleaseDate, "{0:d MMM yyyy}", new { @class = "form-control" })
     </div>
     <div class="form-group">
         @Html.LabelFor(e => e.Movie.Genre)
-        @Html.DropDownListFor(e => e.Movie.GenreId, new SelectList(Model.Genres, "Id", "Name"),"Select Genre", new { @class = "form-control" })
+        @Html.DropDownListFor(e => e.Movie.GenreId, new SelectList(Model.Genres, "Id", "Name"), "Select Genre", new { @class = "form-control" })
     </div>
     <div class="form-group">
         @Html.LabelFor(e => e.Movie.NumberInStock)
         @Html.TextBoxFor(e => e.Movie.NumberInStock, new { @class = "form-control" })
     </div>
-    @Html.HiddenFor(e=>e.Movie.Id)
-    @Html.HiddenFor(e=>e.Movie.DateAdded)
+    @Html.HiddenFor(e => e.Movie.Id)
+    @Html.HiddenFor(e => e.Movie.DateAdded)
     <button type="submit" class="btn btn-primary">Submit</button>
 }
 

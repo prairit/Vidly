@@ -28,14 +28,26 @@ namespace Vidly.Controllers
             IEnumerable<MembershipType> membershipTypes= _context.MembershipTypes;
             CustomerFormViewModel model = new CustomerFormViewModel
             {
-                MembershipTypes = membershipTypes
+                MembershipTypes = membershipTypes,
+                Customer = new Customer()
             };
             return View("CustomerForm",model);
         }
 
+        [ValidateAntiForgeryToken]
         [HttpPost]
         public ActionResult Save(Customer customer)
         {
+            if (!ModelState.IsValid)
+            {
+                var model=new CustomerFormViewModel
+                {
+                    Customer = customer,
+                    MembershipTypes = _context.MembershipTypes
+                };
+                return View("CustomerForm",model);
+            }
+
             if(customer.Id==0)
                 _context.Customers.Add(customer);
             else
