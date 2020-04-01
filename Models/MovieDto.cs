@@ -16,6 +16,8 @@ namespace Vidly.Models
         [Display(Name = "Genre")]
         [Required]
         public byte GenreId { get; set; }
+
+        public GenreDto Genre { get; set; }
         public DateTime DateAdded { get; set; }
 
         [Required]

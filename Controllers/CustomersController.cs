@@ -60,8 +60,7 @@ namespace Vidly.Controllers
 
         public ActionResult List()
         {
-            IEnumerable<Customer> listCustomers = _context.Customers.Include(e =>e.MembershipType);
-            return View(listCustomers);
+            return View();
         }
 
         public ActionResult Details(int id)
