@@ -8,6 +8,16 @@ namespace Vidly.Models
         [Required]
         [Display(Name = "Email")]
         public string Email { get; set; }
+
+
+        [StringLength(50)]
+        [Required]
+        public string Phone { get; set; }
+
+        [Display(Name = "Drivers License")]
+        [StringLength(255)]
+        [Required]
+        public string DriversLicense { get; set; }
     }
 
     public class ExternalLoginListViewModel
@@ -83,6 +93,10 @@ namespace Vidly.Models
         [Required]
         [Display(Name = "Drivers License")]
         public string DriversLicense { get; set; }
+
+        [StringLength(50)]
+        [Required]
+        public string Phone { get; set; }
     }
 
     public class ResetPasswordViewModel

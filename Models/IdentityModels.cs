@@ -12,6 +12,11 @@ namespace Vidly.Models
     // You can add profile data for the user by adding more properties to your ApplicationUser class, please visit https://go.microsoft.com/fwlink/?LinkID=317594 to learn more.
     public class ApplicationUser : IdentityUser
     {
+
+        [StringLength(50)]
+        [Required]
+        public string Phone { get; set; }
+
         [StringLength(255)]
         [Required]
         public string DriversLicense { get; set; }
